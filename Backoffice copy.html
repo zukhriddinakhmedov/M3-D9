@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <title>Backoffice page</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="">Backoffice</h2>
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" type="text" class="form-control" placeholder="..." aria-describedby="name field"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input id="description" type="textarea" class="form-control" placeholder="..."
+                    aria-describedby="description field" required>
+            </div>
+            <div class="form-group">
+                <label for="brand">Brand</label>
+                <input id="brand" type="text" class="form-control" placeholder="..." aria-describedby="brand field"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="imageUrl">image</label>
+                <input id="imageUrl" type="text" class="form-control" placeholder="..." aria-describedby="brand field"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input id="price" type="number" class="form-control" placeholder="Please write the price" required>
+            </div>
+            <button type="button" onclick="backOffice()" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+    <script>
+        const backOffice = async () => {
+
+
+            const url = "https://striveschool-api.herokuapp.com/api/product/"
+
+
+
+            //console.log(theEvent)
+            try {
+                const theEvent = {
+                    name: document.getElementById("name").value,
+                    description: document.getElementById("description").value,
+                    price: document.getElementById("price").value,
+                    brand: document.getElementById("brand").value,
+                    imageUrl: document.getElementById("imageUrl").value
+                }
+                const response = await fetch(url, {
+                    method: "POST",
+                    body: JSON.stringify(theEvent),
+                    headers: new Headers({
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFkMDQwMTJkNTI2MjAwMTViNmRjZDUiLCJpYXQiOjE2MjkyOTE1NTIsImV4cCI6MTYzMDUwMTE1Mn0.WmVlev3Pi_RiL0uErwodP2-SpBVDOk-FJAQQ24GKtK8"
+                    })
+                })
+                console.log(response)
+
+
+
+            } catch (err) {
+                console.log(err)
+            }
+
+
+            console.log("HI")
+        }
+           //backOffice()
+
+    </script>
+
+</body>
+
+</html>
