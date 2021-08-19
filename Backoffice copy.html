@@ -14,6 +14,22 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="./front copy.html">Amazon Shopping</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="./Backoffice copy.html">Backoffice <span
+                            class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="container">
         <h2 class="">Backoffice</h2>
         <form>
@@ -62,7 +78,7 @@
 
             //console.log(theEvent)
             try {
-                const theEvent = {
+                const theProduct = {
                     name: document.getElementById("name").value,
                     description: document.getElementById("description").value,
                     price: document.getElementById("price").value,
@@ -71,7 +87,7 @@
                 }
                 const response = await fetch(url, {
                     method: "POST",
-                    body: JSON.stringify(theEvent),
+                    body: JSON.stringify(theProduct),
                     headers: new Headers({
                         "Content-Type": "application/json",
                         "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFkMDQwMTJkNTI2MjAwMTViNmRjZDUiLCJpYXQiOjE2MjkyOTE1NTIsImV4cCI6MTYzMDUwMTE1Mn0.WmVlev3Pi_RiL0uErwodP2-SpBVDOk-FJAQQ24GKtK8"
